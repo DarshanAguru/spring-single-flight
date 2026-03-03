@@ -31,13 +31,43 @@ When a popular cache key expires, high-concurrency applications often suffer fro
 📦 Installation
 --------------
 
-Add it to your `pom.xml`:
+As the package is not yet published to Maven Central, you can use the snapshot JAR provided in the `snapshot` folder of the repository.
+
+### Installing to Local Maven Repository (Recommended)
+
+1. Download the `spring-singleflight-0.0.1-SNAPSHOT.jar` from the `snapshot/` directory.
+2. Run the following command to install it into your local Maven cache:
+
+```bash
+mvn install:install-file \
+   -Dfile=snapshot/spring-singleflight-0.0.1-SNAPSHOT.jar \
+   -DgroupId=com.darshan \
+   -DartifactId=spring-singleflight \
+   -Dversion=0.0.1-SNAPSHOT \
+   -Dpackaging=jar
+```
+
+3. Add the dependency to your `pom.xml`:
 
 ```xml
 <dependency>
     <groupId>com.darshan</groupId>
     <artifactId>spring-singleflight</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
+### Option 2: System Path Dependency
+
+Alternatively, you can place the JAR in a folder in your project (e.g., `snapshot/`) and reference it directly in your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.darshan</groupId>
+    <artifactId>spring-singleflight</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/snapshot/spring-singleflight-0.0.1-SNAPSHOT.jar</systemPath>
 </dependency>
 ```
 
