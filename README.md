@@ -3,7 +3,6 @@ spring-singleflight
 
 A lightweight, developer-friendly Spring Boot Starter to prevent **Cache Stampedes** using the Single Flight pattern.
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.darshan/spring-singleflight.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:com.darshan%20AND%20a:spring-singleflight)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.2-brightgreen.svg)](https://spring.io/projects/spring-boot)
 
