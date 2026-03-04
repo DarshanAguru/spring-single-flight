@@ -27,6 +27,21 @@ When a popular cache key expires, high-concurrency applications often suffer fro
 
 ---
 
+📊 Performance Impact
+---------------------
+
+Under a simulated Cache Stampede of **1,000,000 requests** (1,000 concurrent users), `spring-singleflight` delivered massive improvements:
+
+- **🚀 2.3x Higher Throughput:** Increased from `7,288` to `17,063` requests per second.
+- **⚡ 2.3x Faster Execution:** Total time dropped from `137s` to `58s`.
+- **📉 72% Drop in Tail Latency:** P99 response time fell from `265ms` down to just `73ms`.
+
+> *Note: Test conducted with a concurrency level of 1,000 for 1M requests. The endpoint returned a 127 byte payload (transferring ~232MB total). Absolute throughput will vary based on your payload sizes and database latency.*
+
+Check out the full [**Performance Benchmark Report**](./PERFORMANCE.md) for detailed Apache Bench metrics!
+
+---
+
 📦 Installation
 --------------
 
