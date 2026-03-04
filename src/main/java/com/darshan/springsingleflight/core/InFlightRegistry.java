@@ -17,11 +17,11 @@ public class InFlightRegistry {
 
     public InFlightRegistry(SingleFlightProperties properties) {
         long maxSize = properties.getMaxSize() > 0 ? properties.getMaxSize() : 10_000;
-        long resulTtlMs = properties.getResulTtlMs() > 0 ? properties.getResulTtlMs() : 200;
+        long resultTtlMs = properties.getResultTtlMs() > 0 ? properties.getResultTtlMs() : 200;
         this.cache = Caffeine
                 .newBuilder()
                 .maximumSize(maxSize)
-                .expireAfterWrite(resulTtlMs, TimeUnit.MILLISECONDS)
+                .expireAfterWrite(resultTtlMs, TimeUnit.MILLISECONDS)
                 .build();
     }
 

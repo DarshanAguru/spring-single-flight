@@ -102,7 +102,7 @@ You can customize the registry in your `application.yml`:
 ```yaml
 singleflight:
   # How long the shared result stays in cache for subsequent instant requests (Default: 200 ms)
-  resul-ttl-ms: 200
+  result-ttl-ms: 200
   # Max number of single-flight keys to keep in memory (Default: 10000)
   max-size: 10000
 ```
