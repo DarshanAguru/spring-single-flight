@@ -12,6 +12,23 @@ An expensive operation (simulated database call) was exposed via a REST API. We 
 - **Payload Size:** 127 bytes (small JSON object)
 - **Total Data Transferred:** ~232 MB
 
+Request
+```bash
+curl -X GET http://localhost:9010/blog/11001
+```
+Response
+```json
+{
+    "id":11001,
+    "title":"Blog 11001",
+    "data":"This is a mock blog",
+    "rating":4.2,
+    "interactions":210,
+    "dateTime":"2026-03-04T19:40:52"
+}
+```
+
+Performance Test using Apache Bench
 ```bash
 ab -n 1000000 -c 1000 http://localhost:9010/blog/11001
 ```
