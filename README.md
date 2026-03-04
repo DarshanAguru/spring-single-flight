@@ -46,7 +46,9 @@ mvn install:install-file \
    -Dpackaging=jar
 ```
 
-3. Add the dependency to your `pom.xml`:
+3. Add the dependency to your project:
+
+#### Maven
 
 ```xml
 <dependency>
@@ -56,11 +58,30 @@ mvn install:install-file \
 </dependency>
 ```
 
-### Option 2: System Path Dependency
+#### Gradle
 
-Alternatively, you can place the JAR in a folder in your project (e.g., `snapshot/`) and reference it directly in your `pom.xml`:
+```gradle
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.darshan:spring-singleflight:0.0.1-SNAPSHOT'
+}
+```
+
+### Option 2: Using the JAR directly (Manual Dependencies)
+
+If you strictly want to use the `.jar` file without installing it to your local Maven cache, you can reference it directly.
+
+#### Maven
+
+1. Place the JAR in a folder in your project (e.g., `snapshot/`).
+2. Add the JAR and the required dependencies to your `pom.xml`:
 
 ```xml
+<!-- Your local JAR file -->
 <dependency>
     <groupId>com.darshan</groupId>
     <artifactId>spring-singleflight</artifactId>
@@ -68,6 +89,40 @@ Alternatively, you can place the JAR in a folder in your project (e.g., `snapsho
     <scope>system</scope>
     <systemPath>${project.basedir}/snapshot/spring-singleflight-0.0.1-SNAPSHOT.jar</systemPath>
 </dependency>
+
+<!-- Required dependencies for spring-singleflight to work! -->
+<dependency>
+    <groupId>com.github.ben-manes.caffeine</groupId>
+    <artifactId>caffeine</artifactId>
+    <version>3.1.8</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
+```
+
+#### Gradle
+
+1. Place the JAR in a folder in your project (e.g., `libs/`).
+2. Add the flat directory repository and the required dependencies to your `build.gradle`:
+
+```gradle
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    // Your local JAR file
+    implementation name: 'spring-singleflight-0.0.1-SNAPSHOT'
+
+    // Required dependencies for spring-singleflight to work!
+    implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+}
 ```
 
 ---

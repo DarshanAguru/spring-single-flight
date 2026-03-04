@@ -1,7 +1,8 @@
 package com.darshan.springsingleflight.core;
 
 import com.darshan.springsingleflight.config.SingleFlightProperties;
-import com.github.benmanes.caffeine.cache.*;
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 
 import java.util.concurrent.TimeUnit;
 
