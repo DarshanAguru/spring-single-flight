@@ -66,6 +66,7 @@ public class SingleFlightAspect {
                 future.getFuture().complete(result);
             } catch (Throwable e) {
                 future.getFuture().completeExceptionally(e);
+                registry.remove(key);
             }
         });
 
